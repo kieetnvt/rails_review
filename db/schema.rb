@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215064027) do
+ActiveRecord::Schema.define(version: 20160215073223) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "supplier_id",    limit: 4
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 20160215064027) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "employees", force: :cascade do |t|
+    t.integer  "manager_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "employees", ["manager_id"], name: "index_employees_on_manager_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
